@@ -1,0 +1,18 @@
+class Point3D:
+    points = [1,2,3,4]#coord - in list
+
+    def __init__(self, args):#constructor
+        self.points = args# if self.points = points, will values from points (from class)
+
+    def setPoints(self, val): #method for changing #index of elem and value
+        self.points[val] += 5#use diction method
+
+    def showPoints(self):
+        return tuple(self.points)
+
+pt = Point3D([2,3,5])#create instance with local (args)
+pt.setPoints(1)#elem with certain index which need to change
+
+print(pt.showPoints())
+print('-----')
+print(Point3D.points)
