@@ -1,0 +1,60 @@
+class PersonsIterator: #create iterator
+    def __init__(self, perslst:list):
+        self.__checkPerslist(perslst)
+        self.__limit = len(perslst)
+        self.__perslst = perslst
+        self.__el = 0# початковий елемент (його індекс) або к-сть ітерацій
+       
+        
+    def __checkPerslist(self,perslst):
+        for elems in perslst:
+            if not isinstance(elems, Person):
+                raise ValueError("Data for list - only from class Persons")
+
+    def __str__(self): #return elements of list
+        b = [el for elems in self.__perslst]
+        return b #or f"{b}"
+    
+    def __iter__(self):#method
+        return self
+
+    def __next__(self):# method
+        if self.__el >= self.__limit:#якщо  дійшли до ліміта (індекс елемента більше довжини)
+            self.__el = 0 #обнулили 
+            raise StopIteration
+        
+        self.__el +=1# додаємо збільшуємо ксть ітерацій (лічильник
+        return self.__perslst[self.__el-1] 
+      
+class Person: #object for iteration
+    def __init__(self, name:str, age:int, surname:str):
+        self.__name = name
+        self.__age = age
+        self.__surname = surname
+        
+    def __str__(self):
+        return f"[{self.__name}, {self.__age}, {self.__surname}]" # in [] - to get element by element
+    
+    @property# for comfortable access
+    def name(self):
+        return self.__name #getter
+
+    @property# for comfortable access
+    def age(self):
+        return self.__age #getter of age 
+        
+    @property# for comfortable access
+    def surname(self):
+        return self.__surname #getter
+    
+                  
+pers = PersonsIterator([Person("Alex",18, "Jun")] )
+for el in pers:
+    print(el)
+for el in pers:
+    print(el.name)#call getter name
+for el in pers:
+    print(el.age)
+for el in pers:
+    print(el.surname)
+        
