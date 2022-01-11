@@ -1,0 +1,15 @@
+class Counter:
+    def __init__ (self):
+        self.__counter = 0 #лічильник
+
+    def __call__(self, *args, **kwargs):
+        self.__counter +=1
+        print(self.__counter)
+        return self.__counter # return value of counter
+        
+    #use methods __init__ & __call__
+
+c1 = Counter() # create instance and call (classic)
+c1()
+c1()
+c1()
