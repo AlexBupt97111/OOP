@@ -1,0 +1,30 @@
+class Point:
+    def __init__ (self, x = 0,y = 0):
+        self.__x = x
+        self.__y = y 
+
+    def __CheckValue(x):
+        if (isinstance(x,int) or isinstance (x,float)):
+            return True
+        return False
+    
+    def __getCoordX(self):# make private, cannot refer from outside
+        return self.__x
+       
+
+    def __setCoordX(self,x):
+        if Point.__CheckValue(x):
+            self.__x = x #for __x give x , if x  - correctly
+          
+        else:
+            raise ValueError("Not correctly data format")
+        
+    
+    CoordX = property(__getCoordX, __setCoordX)#create property coordX which use get and settter
+   
+    
+pt = Point(1,2)
+
+pt.CoordX = 100 #write value (call setter)
+x = pt.CoordX #read value (cal getter)
+print(x)
