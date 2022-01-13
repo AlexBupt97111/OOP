@@ -1,0 +1,25 @@
+class CoordValue:#descriptor; to keep DRY (don't repeat)
+    def __get__(self, instance, owner):
+        return self.__value
+
+    def __set__(self,instance,value):
+        self.__value = value
+
+    def __delete__(self,obj):
+        del self.__value
+
+    
+class Point:
+    coordX = CoordValue()#descriptor; call class CoordValue 
+    coordY = CoordValue()#descriptor
+    
+    def __init__ (self, x = 0,y = 0):#give certain value this descriptors; call constructor
+        self.coordX = x#give
+        self.coordY = y #give
+
+   
+    
+pt = Point(1,2)
+print(pt.coordX, pt.coordY)
+pt.coordX = 5#can use descriptor like simple property
+print(pt.coordX, pt.coordY)
