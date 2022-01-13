@@ -1,0 +1,41 @@
+class Point:
+    def __init__ (self, x = 0,y = 0):
+        self.__x = x
+        self.__y = y 
+
+    def __CheckValue(x):
+        if (isinstance(x,int) or isinstance (x,float)):
+            return True
+        return False
+    
+    @property # decorator
+    def CoordX(self): #getter
+        return self.__x
+
+    @CoordX.setter
+    def CoordX(self,x):#setter
+        if Point.__CheckValue(x):
+            self.__x = x #for __x give x , if x  - correctly
+        else:
+            raise ValueError("Not correctly data format")
+        
+    @CoordX.deleter    
+    def CoordX(self):#deleter
+        print("Delete of property")
+        del self.__x
+        
+        
+    
+    #CoordX = property(__getCoordX, __setCoordX, __delCoordX)#realazation of property
+   
+    
+pt = Point(1,2)
+pt.CoordX = 100 #write value (call setter)
+x = pt.CoordX #read value (cal getter)
+print(x)
+
+del pt.CoordX
+pt.CoordX = 8 #create again new local variable of instance of class
+pt.CoordX
+
+#here create only 1 - x. want more - don't keep DRY. To keep it-  use descriptor !!
