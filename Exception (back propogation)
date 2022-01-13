@@ -1,0 +1,15 @@
+def func2():
+    try:
+        return 1/0
+    except:
+        return "__div on zero __"
+
+def func1():
+    return func2()
+
+print("yy")
+print("i")
+print("ooo")
+print(func1())# print exception
+print("fgg")
+print("tt")# all prog work
