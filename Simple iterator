@@ -1,0 +1,18 @@
+class MyIter: #iterable class
+    def __init__(self, limit):
+        self.__num = 0 # local property
+        self.__limit = limit # limit for num (доколи збільшуємо num)
+
+    def __iter__(self):
+        return self # return link on instance of class
+
+    def __next__(self):
+        if self.__num >= self.__limit:
+            raise StopIteration
+        
+        self.__num +=1
+        return self.__num
+
+it = MyIter(10) # create instance
+for i in it:
+    print(i)
